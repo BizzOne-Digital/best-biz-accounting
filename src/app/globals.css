@@ -1,26 +1,196 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-dark: #32190f;
+  --color-brand-chocolate: #24130d;
+  --color-brand-warm: #61351e;
+  --color-brand-orange: #e65b00;
+  --color-brand-orange-hover: #c94f00;
+  --color-brand-gold: #f5a23a;
+  --color-brand-cream: #faf6f1;
+  --color-brand-beige: #f3ebe3;
+  --color-brand-text: #26160f;
+  --color-brand-muted: #665b55;
+  --color-brand-border: #eadfd3;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-brand-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: #f5a23a55;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-orange);
+  outline-offset: 2px;
+}
+
+/* ---------- Motion system ---------- */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scroll reveal: content stays visible if JS is unavailable */
+@media (scripting: enabled) {
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.9s var(--ease-smooth),
+      transform 0.9s var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+  .reveal[data-variant="left"] {
+    transform: translate3d(-36px, 0, 0);
+  }
+  .reveal[data-variant="right"] {
+    transform: translate3d(36px, 0, 0);
+  }
+  .reveal[data-variant="zoom"] {
+    transform: scale(0.94);
+  }
+  .reveal[data-variant="fade"] {
+    transform: none;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* Hero entrance (plays once on load, no JS needed) */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes ken-burns {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-hero {
+  opacity: 0;
+  animation: fade-up 1s var(--ease-out-expo) forwards;
+}
+.animate-ken-burns {
+  animation: ken-burns 2.4s var(--ease-smooth) both;
+}
+.animate-draw {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: draw-line 1.2s var(--ease-smooth) 0.7s forwards;
+}
+.animate-page-in {
+  animation: page-in 0.6s var(--ease-smooth) both;
+}
+.animate-float {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+/* Animated underline for text links */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-smooth);
+}
+.link-underline:hover {
+  background-size: 100% 1.5px;
+}
+
+/* Smooth accordion height (grid row trick) */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-smooth);
+}
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.accordion-panel > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal.is-visible,
+  .animate-hero {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-draw {
+    stroke-dashoffset: 0 !important;
+  }
+  .animate-float,
+  .animate-ken-burns {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
