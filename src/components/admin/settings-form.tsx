@@ -62,7 +62,7 @@ export function SettingsForm() {
         <Card className="space-y-4 p-5 sm:p-6">
           <h2 className="font-semibold">Business details</h2>
           {text("siteName", "Website name")}
-          {text("ownerName", "Owner name")}
+          {text("ownerName", "Team name", { hint: "(shown in footer and contact page)" })}
           {text("phone", "Contact phone", { type: "tel" })}
           {text("email", "Contact email", { type: "email" })}
           {text("serviceArea", "Service description", { hint: "(shown in header and footer)" })}

@@ -12,7 +12,7 @@ import { getPage, getServices, getSettings } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Bookkeeping Services",
   description:
-    "Remote bookkeeping services for small businesses: accounts payable, accounts receivable, bank reconciliations, inventory tracking, payroll (T4, ROE, remittances) and GST filing support.",
+    "Bookkeeping services for small businesses: accounts payable, accounts receivable, bank reconciliations, inventory tracking, payroll (T4, ROE, remittances) and GST filing support.",
   alternates: { canonical: "/services" },
 };
 

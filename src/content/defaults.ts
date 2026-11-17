@@ -5,17 +5,17 @@
 
 export const DEFAULT_SETTINGS = {
   siteName: "Best Biz Accounting",
-  ownerName: "Angela Rotvik",
+  ownerName: "The BBA Team",
   phone: "(403) 617-2677",
   email: "angela@bestbizaccounting.ca",
-  serviceArea: "Remote Bookkeeping Services",
+  serviceArea: "Flexible Bookkeeping Services",
   logoUrl: "/brand/bba-logo.png",
   faviconUrl: "",
   footerDescription:
-    "Reliable, accurate remote bookkeeping support for small businesses, backed by over 20 years of bookkeeping experience.",
-  seoTitle: "Best Biz Accounting | Remote Bookkeeping Services",
+    "Reliable, accurate bookkeeping support for small businesses, backed by over 20 years of bookkeeping experience.",
+  seoTitle: "Best Biz Accounting | Bookkeeping Services for Small Businesses",
   seoDescription:
-    "Best Biz Accounting provides reliable remote bookkeeping services for small businesses. With over 20 years of experience, Angela Rotvik offers support with payroll, reconciliations, GST, and more.",
+    "Best Biz Accounting provides reliable bookkeeping services for small businesses. With over 20 years of experience, the BBA team offers support with payroll, reconciliations, GST, and more.",
   ogImageUrl: "/images/hero-desk.webp",
   privacyPolicyUrl: "",
   social: { facebook: "", instagram: "", linkedin: "" },
@@ -31,7 +31,7 @@ export const DEFAULT_PAGES = {
       eyebrow: "Professional Bookkeeping Services",
       heading: "You can count on us!!!",
       description:
-        "Reliable, accurate, and remote bookkeeping support for small businesses, so you can focus on growing your business.",
+        "Reliable, accurate, and flexible bookkeeping support for small businesses, so you can focus on growing your business.",
       image: "/images/hero-desk.webp",
       primaryCta: "Our Services",
       secondaryCta: "Contact Us",
@@ -41,7 +41,7 @@ export const DEFAULT_PAGES = {
       items: [
         { title: "20+ Years", text: "of Experience" },
         { title: "Small Business", text: "Focused" },
-        { title: "Remote & Flexible", text: "Service" },
+        { title: "Flexible", text: "Service Options" },
         { title: "Accurate & Reliable", text: "Support" },
       ] as TitleText[],
     },
@@ -61,13 +61,13 @@ export const DEFAULT_PAGES = {
       visible: true,
       eyebrow: "About Best Biz Accounting",
       heading: "Experienced Bookkeeping Support You Can Rely On",
-      body: "With over 20 years of bookkeeping experience, Angela Rotvik provides dependable financial recordkeeping support to businesses across a variety of industries. From couriers and manufacturers to rental businesses and fuel supply companies, Best Biz Accounting understands the importance of accurate and organized bookkeeping.",
+      body: "With over 20 years of bookkeeping experience, the BBA team provides dependable financial recordkeeping support to businesses across a variety of industries. From couriers and manufacturers to rental businesses and fuel supply companies, Best Biz Accounting understands the importance of accurate and organized bookkeeping.",
       image: "/images/workspace-bright.webp",
       badge: "20+ Years",
       highlights: [
         "Practical, hands-on bookkeeping experience",
         "Support built around small businesses",
-        "Convenient remote service",
+        "Flexible service tailored to your needs",
         "Organized, up-to-date financial records",
         "Experience across multiple industries",
       ],
@@ -80,7 +80,7 @@ export const DEFAULT_PAGES = {
       items: [
         { title: "20+ Years of Experience", text: "Practical bookkeeping experience across different business environments." },
         { title: "Reliable Recordkeeping", text: "Organized financial records and careful attention to detail." },
-        { title: "Remote Bookkeeping Support", text: "Convenient bookkeeping assistance without the need for an in-person office visit." },
+        { title: "Flexible Bookkeeping Support", text: "Convenient bookkeeping assistance, available remotely or tailored to how your business works." },
         { title: "Personalized Service", text: "Bookkeeping support tailored to each business's actual needs." },
       ] as TitleText[],
     },
@@ -88,7 +88,7 @@ export const DEFAULT_PAGES = {
       visible: true,
       eyebrow: "Industry Experience",
       heading: "Bookkeeping Experience Across Different Industries",
-      intro: "Angela has supported the bookkeeping needs of businesses in a range of industries, including:",
+      intro: "The BBA team has supported the bookkeeping needs of businesses in a range of industries, including:",
       items: [
         { title: "Courier Businesses", text: "Recordkeeping for delivery and courier operations." },
         { title: "Manufacturing Companies", text: "Bookkeeping support for production-based businesses." },
@@ -101,12 +101,12 @@ export const DEFAULT_PAGES = {
       visible: true,
       eyebrow: "How It Works",
       heading: "Getting Started Is Simple",
-      intro: "Remote bookkeeping support, set up around your business in a few straightforward steps.",
+      intro: "Bookkeeping support, set up around your business in a few straightforward steps.",
       items: [
         { title: "Reach Out", text: "Call, email, or send a message through the contact form to start the conversation." },
         { title: "Discuss Your Needs", text: "We talk through your records, current workload, and the services your business needs." },
         { title: "Get a Personalized Quote", text: "You receive pricing based on your actual bookkeeping requirements, not a one-size-fits-all package." },
-        { title: "Stay Organized", text: "Your books are kept accurate and up to date remotely, so you can focus on running your business." },
+        { title: "Stay Organized", text: "Your books are kept accurate and up to date, so you can focus on running your business." },
       ] as TitleText[],
     },
     faq: {
@@ -116,12 +116,12 @@ export const DEFAULT_PAGES = {
       intro: "Answers to common questions about working with Best Biz Accounting.",
       items: [
         {
-          question: "Do I need to meet in person?",
-          answer: "No. Best Biz Accounting provides remote bookkeeping services, so you can get reliable support without an in-person office visit.",
+          question: "Can I request an office visit?",
+          answer: "Yes. We tailor our services to your needs. Contact us to discuss what works best for your business.",
         },
         {
           question: "How much do your bookkeeping services cost?",
-          answer: "Pricing is personalized. Every business has different records, volume, and needs, so contact Angela to discuss your situation and request a quote.",
+          answer: "Pricing is personalized. Every business has different records, volume, and needs, so contact us to discuss your situation and request a quote.",
         },
         {
           question: "What bookkeeping services do you offer?",
@@ -129,7 +129,7 @@ export const DEFAULT_PAGES = {
         },
         {
           question: "What types of businesses do you work with?",
-          answer: "Best Biz Accounting focuses on small businesses. Angela has bookkeeping experience with couriers, manufacturers, rental businesses, fuel supply companies, and other small businesses.",
+          answer: "Best Biz Accounting focuses on small businesses. The BBA team has bookkeeping experience with couriers, manufacturers, rental businesses, fuel supply companies, and other small businesses.",
         },
         {
           question: "Do you provide tax or legal advice?",
@@ -152,7 +152,7 @@ export const DEFAULT_PAGES = {
       heading: "Ready to Simplify Your Bookkeeping?",
       description:
         "Let's discuss your business's bookkeeping needs and how Best Biz Accounting can help you stay organized.",
-      primaryLabel: "Contact Angela",
+      primaryLabel: "Contact Us",
     },
   },
   services: {
@@ -164,13 +164,13 @@ export const DEFAULT_PAGES = {
     },
     intro: {
       heading: "Everyday Bookkeeping, Handled With Care",
-      text: "Each service below focuses on keeping your records accurate, organized, and current. Services are provided remotely and can be combined to suit your business.",
+      text: "Each service below focuses on keeping your records accurate, organized, and current. Services can be combined and tailored to suit your business.",
     },
     pricing: {
       visible: true,
       heading: "Bookkeeping Solutions Tailored to Your Business",
       description:
-        "Every business has different bookkeeping requirements. Contact Angela to discuss your records, workload, and services needed.",
+        "Every business has different bookkeeping requirements. Contact us to discuss your records, workload, and services needed.",
       ctaLabel: "Request a Personalized Quote",
     },
     cta: {
@@ -184,13 +184,13 @@ export const DEFAULT_PAGES = {
     hero: {
       eyebrow: "About Us",
       heading: "About Best Biz Accounting",
-      subtitle: "Experienced, dependable bookkeeping support for small businesses.",
+      subtitle: "Experienced, dependable, bookkeeping support, for small businesses.",
       image: "/images/office-window.webp",
     },
     intro: {
-      eyebrow: "Meet the Owner",
-      heading: "Meet Angela Rotvik",
-      body: "Angela Rotvik is the owner of Best Biz Accounting and brings over 20 years of bookkeeping experience to every client relationship.\n\nOver the years, Angela has supported businesses in a variety of industries, including couriers, manufacturers, rental businesses, and fuel supply companies. That experience has built a practical understanding of how accurate, organized records help a business run smoothly.\n\nToday, Best Biz Accounting provides remote bookkeeping support for small businesses, so owners can stay on top of their finances without needing an in-person office visit.",
+      eyebrow: "Who We Are",
+      heading: "Meet the BBA Team",
+      body: "Best Biz Accounting brings over 20 years of bookkeeping experience to every client relationship.\n\nOver the years, the BBA team has supported businesses in a variety of industries, including couriers, manufacturers, rental businesses, and fuel supply companies. That experience has built a practical understanding of how accurate, organized records help a business run smoothly.\n\nToday, Best Biz Accounting provides flexible bookkeeping support for small businesses, tailored to the way each business works, so owners can stay on top of their finances.",
       image: "/images/workspace-bright.webp",
       industries: ["Couriers", "Manufacturers", "Rental Businesses", "Fuel Supply Companies"],
     },
@@ -243,8 +243,8 @@ export const DEFAULT_PAGES = {
     },
     form: {
       heading: "Send a Message",
-      intro: "Fill out the form and Angela will get back to you as soon as possible.",
-      successMessage: "Thank you for reaching out. Your message has been received and Angela will be in touch soon.",
+      intro: "Fill out the form and our team will get back to you as soon as possible.",
+      successMessage: "Thank you for reaching out. Your message has been received and our team will be in touch soon.",
     },
   },
 };

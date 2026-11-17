@@ -10,7 +10,7 @@ import { getPage, getSettings } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Meet Angela Rotvik of Best Biz Accounting: over 20 years of bookkeeping experience supporting couriers, manufacturers, rental businesses, fuel supply companies and other small businesses.",
+    "Meet the Best Biz Accounting team: over 20 years of bookkeeping experience supporting couriers, manufacturers, rental businesses, fuel supply companies and other small businesses.",
   alternates: { canonical: "/about" },
 };
 

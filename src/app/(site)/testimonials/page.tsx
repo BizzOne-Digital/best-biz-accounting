@@ -11,7 +11,7 @@ import { telHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Client Testimonials",
-  description: "Read feedback from businesses supported by Best Biz Accounting's remote bookkeeping services.",
+  description: "Read feedback from businesses supported by Best Biz Accounting's bookkeeping services.",
   alternates: { canonical: "/testimonials" },
 };
 

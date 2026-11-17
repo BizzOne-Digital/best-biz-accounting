@@ -10,7 +10,7 @@ import { telHref } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Angela Rotvik at Best Biz Accounting for remote bookkeeping support. Call (403) 617-2677 or send a message to request a personalized quote.",
+    "Contact Best Biz Accounting for bookkeeping support. Call (403) 617-2677 or send a message to request a personalized quote.",
   alternates: { canonical: "/contact" },
 };
 
@@ -18,10 +18,10 @@ export default async function ContactPage() {
   const [page, s] = await Promise.all([getPage("contact"), getSettings()]);
 
   const details = [
-    { Icon: UserRound, label: "Owner", value: s.ownerName },
+    { Icon: UserRound, label: "Team", value: s.ownerName },
     { Icon: Phone, label: "Phone", value: s.phone, href: telHref(s.phone) },
     { Icon: Mail, label: "Email", value: s.email, href: `mailto:${s.email}` },
-    { Icon: Laptop, label: "Service", value: s.serviceArea },
+    { Icon: Laptop, label: "Services", value: s.serviceArea },
   ];
 
   return (
@@ -33,7 +33,7 @@ export default async function ContactPage() {
           <Reveal>
             <aside className="relative h-full overflow-hidden rounded-3xl bg-brand-dark p-8 text-white sm:p-10">
               <div aria-hidden="true" className="absolute -right-20 -bottom-20 size-64 rounded-full bg-brand-orange/25 blur-2xl" />
-              <h2 className="relative font-serif text-2xl font-bold sm:text-3xl">Get in Touch With {s.ownerName.split(" ")[0]}</h2>
+              <h2 className="relative font-serif text-2xl font-bold sm:text-3xl">Get in Touch With Our Team</h2>
               <p className="relative mt-3 text-white/75">
                 Prefer to talk it through? Call or email directly and we&apos;ll discuss what your business needs.
               </p>

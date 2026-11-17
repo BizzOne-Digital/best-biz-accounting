@@ -17,7 +17,6 @@ async function StructuredData() {
     telephone: s.phone,
     email: s.email,
     slogan: "You can count on us!!!",
-    founder: { "@type": "Person", name: s.ownerName },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Bookkeeping Services",
