@@ -3,7 +3,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { connectDB, isDbConfigured, toPlain } from "@/lib/db";
 import { TAGS } from "@/lib/cache";
 import { mergeDefaults } from "@/lib/utils";
-import { DEFAULT_PAGES, DEFAULT_SERVICES, DEFAULT_SETTINGS, type PageKey, type PagesData, type SiteSettingsData } from "@/content/defaults";
+import { DEFAULT_PAGES, DEFAULT_SERVICES, DEFAULT_SETTINGS, DEFAULT_TESTIMONIALS, type PageKey, type PagesData, type SiteSettingsData } from "@/content/defaults";
 import { PageContent, Service, SiteSettings, Testimonial } from "@/models";
 import type { ServiceItem, TestimonialItem } from "@/types";
 
@@ -65,18 +65,23 @@ export async function getServices(): Promise<ServiceItem[]> {
   }
 }
 
+export function defaultTestimonialItems(): TestimonialItem[] {
+  return DEFAULT_TESTIMONIALS.filter((t) => t.published).map((t, i) => ({ ...t, _id: `default-${i}`, order: i }));
+}
+
 export async function getTestimonials(): Promise<TestimonialItem[]> {
   "use cache";
   cacheLife("hours");
   cacheTag(TAGS.testimonials);
-  if (!isDbConfigured()) return [];
+  if (!isDbConfigured()) return defaultTestimonialItems();
   try {
     await connectDB();
+    if ((await Testimonial.estimatedDocumentCount()) === 0) return defaultTestimonialItems();
     const docs = await Testimonial.find({ published: true }).sort({ featured: -1, order: 1, createdAt: -1 }).lean();
     return toPlain<TestimonialItem[]>(docs);
   } catch (err) {
     console.error("[content] testimonials fallback", err);
-    return [];
+    return defaultTestimonialItems();
   }
 }
 

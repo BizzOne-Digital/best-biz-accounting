@@ -281,7 +281,11 @@ export function TestimonialsPreview({ data, items }: { data: Home["testimonials"
             {data.ctaLabel} <ArrowRight aria-hidden="true" />
           </ButtonLink>
         </Reveal>
-        <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul
+          className={
+            shown.length === 1 ? "mx-auto mt-12 max-w-2xl" : "mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          }
+        >
           {shown.map((t, i) => (
             <Reveal as="li" key={t._id} delay={i * 80}>
               <TestimonialCard t={t} />

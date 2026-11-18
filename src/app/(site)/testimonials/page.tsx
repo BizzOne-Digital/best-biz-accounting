@@ -25,7 +25,13 @@ export default async function TestimonialsPage() {
       <section className="bg-brand-cream py-16 sm:py-20 lg:py-24">
         <Container>
           {items.length > 0 ? (
-            <ul className="columns-1 gap-6 md:columns-2 lg:columns-3 [&>li]:mb-6 [&>li]:break-inside-avoid">
+            <ul
+              className={
+                items.length === 1
+                  ? "mx-auto max-w-2xl"
+                  : "columns-1 gap-6 md:columns-2 lg:columns-3 [&>li]:mb-6 [&>li]:break-inside-avoid"
+              }
+            >
               {items.map((t, i) => (
                 <Reveal as="li" key={t._id} delay={(i % 3) * 80}>
                   <TestimonialCard t={t} />

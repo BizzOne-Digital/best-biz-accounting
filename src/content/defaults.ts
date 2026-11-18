@@ -184,7 +184,7 @@ export const DEFAULT_PAGES = {
     hero: {
       eyebrow: "About Us",
       heading: "About Best Biz Accounting",
-      subtitle: "Experienced, dependable, bookkeeping support, for small businesses.",
+      subtitle: "Experienced, dependable, and reliable bookkeeping support for small businesses.",
       image: "/images/office-window.webp",
     },
     intro: {
@@ -304,5 +304,19 @@ export const DEFAULT_SERVICES = [
     summary: "Organized GST records with filing and remittance support.",
     description: "We help organize your GST records and support the filing and remittance process.",
     bullets: ["GST record organization", "Filing support", "Remittance support"],
+  },
+];
+
+/** Real, client-provided testimonials (verbatim). Imported into the database on first admin visit. */
+export const DEFAULT_TESTIMONIALS = [
+  {
+    clientName: "Julie M. Lemon, M.S., BCBA",
+    businessName: "Management Consultant, LNN Protection",
+    content:
+      "I can't say enough wonderful things about Angela and the services she provides. She is organized, thorough and expedient with all aspects of our accounting needs. I can't imagine using anyone else to support us with current and future business endeavors!",
+    rating: null as number | null,
+    date: "2023-12-23",
+    published: true,
+    featured: true,
   },
 ];
