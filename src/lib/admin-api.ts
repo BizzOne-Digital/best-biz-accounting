@@ -2,8 +2,7 @@ import "server-only";
 import { connection } from "next/server";
 import { connectDB } from "@/lib/db";
 import { getAdmin, isSameOrigin, unauthorized, type AdminSession } from "@/lib/auth";
-import { DEFAULT_SERVICES, DEFAULT_TESTIMONIALS } from "@/content/defaults";
-import { Service, Testimonial } from "@/models";
+import { Service } from "@/models";
 import { slugify } from "@/lib/utils";
 
 export class HttpError extends Error {
@@ -59,21 +58,4 @@ export async function uniqueServiceSlug(base: string, excludeId?: string) {
     slug = `${root}-${i}`;
   }
   return slug;
-}
-
-/** First admin visit to Services imports the default six services so they become editable. */
-export async function ensureServicesSeeded() {
-  if ((await Service.estimatedDocumentCount()) > 0) return;
-  await Service.insertMany(DEFAULT_SERVICES.map((s, i) => ({ ...s, order: i, published: true })), { ordered: false }).catch(
-    () => undefined,
-  );
-}
-
-/** First admin visit to Testimonials imports the client-provided testimonials so they become editable. */
-export async function ensureTestimonialsSeeded() {
-  if ((await Testimonial.estimatedDocumentCount()) > 0) return;
-  await Testimonial.insertMany(
-    DEFAULT_TESTIMONIALS.map((t, i) => ({ ...t, date: t.date ? new Date(t.date) : null, order: i })),
-    { ordered: false },
-  ).catch(() => undefined);
 }

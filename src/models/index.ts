@@ -199,3 +199,12 @@ const RateLimitSchema = new Schema({
 });
 RateLimitSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 export const RateLimit = model<IRateLimit>("RateLimit", RateLimitSchema);
+
+/* ---------------- SeedLog: which built-in defaults were already imported ---------------- */
+export interface ISeedLog {
+  _id: Types.ObjectId;
+  key: string;
+  createdAt: Date;
+}
+const SeedLogSchema = new Schema({ key: { type: String, required: true, unique: true } }, { timestamps: { createdAt: true, updatedAt: false } });
+export const SeedLog = model<ISeedLog>("SeedLog", SeedLogSchema);

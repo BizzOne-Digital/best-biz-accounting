@@ -20,6 +20,7 @@ import {
 import type { PagesData } from "@/content/defaults";
 import type { ServiceItem, TestimonialItem } from "@/types";
 import { ButtonLink } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 import { ServiceIcon } from "@/components/ui/icons";
@@ -133,7 +134,14 @@ export function ServicesPreview({ data, services }: { data: Home["servicesPrevie
               </Link>
             </Reveal>
           ))}
-          <Reveal className="col-span-2 sm:col-span-3" delay={120}>
+          <Reveal
+            delay={120}
+            className={cn(
+              "col-span-2",
+              // fill the remaining space in the last row of the 3-column grid
+              ["sm:col-span-3", "sm:col-span-2", "sm:col-span-1"][services.length % 3],
+            )}
+          >
             <div className="flex flex-col gap-5 rounded-2xl border border-brand-orange/40 bg-gradient-to-br from-[#fff3e8] to-brand-cream p-6 sm:flex-row sm:items-center sm:p-7">
               <span className="flex size-14 shrink-0 items-center justify-center rounded-full border-2 border-brand-orange text-brand-orange">
                 <MessagesSquare className="size-7" strokeWidth={1.6} aria-hidden="true" />
@@ -283,7 +291,11 @@ export function TestimonialsPreview({ data, items }: { data: Home["testimonials"
         </Reveal>
         <ul
           className={
-            shown.length === 1 ? "mx-auto mt-12 max-w-2xl" : "mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            shown.length === 1
+              ? "mx-auto mt-12 max-w-2xl"
+              : shown.length === 2
+                ? "mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2"
+                : "mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           }
         >
           {shown.map((t, i) => (

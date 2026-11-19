@@ -125,7 +125,7 @@ export const DEFAULT_PAGES = {
         },
         {
           question: "What bookkeeping services do you offer?",
-          answer: "Services include accounts payable, accounts receivable, bank reconciliations, inventory tracking and balancing, payroll support (including T4s, ROEs, and remittances), and GST filing and remittance support.",
+          answer: "Services include accounts payable, accounts receivable, bank reconciliations, inventory tracking and balancing, payroll support (including T4s, ROEs, and remittances), GST filing and remittance support, NUANS and new business name searches, annual corporate filing, and data migration.",
         },
         {
           question: "What types of businesses do you work with?",
@@ -305,17 +305,65 @@ export const DEFAULT_SERVICES = [
     description: "We help organize your GST records and support the filing and remittance process.",
     bullets: ["GST record organization", "Filing support", "Remittance support"],
   },
+  {
+    title: "NUANS Business Name Search",
+    slug: "nuans-business-name-search",
+    shortTitle: "NUANS Name Search",
+    icon: "search",
+    summary: "NUANS name search reports to check a proposed business name.",
+    description: "Before you register or incorporate, a NUANS report helps show whether a proposed business name may conflict with existing names and trademarks.",
+    bullets: ["Requesting NUANS name search reports", "Reviewing the search results with you", "Support before you register or incorporate"],
+  },
+  {
+    title: "Annual Corporate Filing",
+    slug: "annual-corporate-filing",
+    shortTitle: "Annual Corporate Filing",
+    icon: "building",
+    summary: "Help keeping your corporation's annual filings current.",
+    description: "We help you keep up with your corporation's annual filing requirements so your records stay current and in good standing.",
+    bullets: ["Annual return filing support", "Tracking filing deadlines", "Organized corporate records"],
+  },
+  {
+    title: "New Business Name Search",
+    slug: "new-business-name-search",
+    shortTitle: "Business Name Search",
+    icon: "clipboard",
+    summary: "Support checking name availability for a new business.",
+    description: "Starting something new? We help you check whether the business name you have in mind is available before you move forward.",
+    bullets: ["Business name availability checks", "Reviewing name options with you", "Support before registering your business"],
+  },
+  {
+    title: "Data Migration",
+    slug: "data-migration",
+    shortTitle: "Data Migration",
+    icon: "database",
+    summary: "Move your financial records into a new bookkeeping system.",
+    description: "Changing bookkeeping systems? We help transfer your existing financial data and check that everything carries over accurately.",
+    bullets: ["Transferring existing financial data", "Reviewing migrated records for accuracy", "Organized setup in your new system"],
+  },
 ];
 
 /** Real, client-provided testimonials (verbatim). Imported into the database on first admin visit. */
 export const DEFAULT_TESTIMONIALS = [
   {
+    seedKey: "julie-lemon-2023",
     clientName: "Julie M. Lemon, M.S., BCBA",
     businessName: "Management Consultant, LNN Protection",
     content:
       "I can't say enough wonderful things about Angela and the services she provides. She is organized, thorough and expedient with all aspects of our accounting needs. I can't imagine using anyone else to support us with current and future business endeavors!",
     rating: null as number | null,
     date: "2023-12-23",
+    published: true,
+    featured: true,
+  },
+  {
+    seedKey: "mark-macdonald-2024",
+    clientName: "Mark Macdonald",
+    businessName: "President & CEO, Enhance ICD (Canada) Inc.",
+    content:
+      "Angela Rotvik and Best Biz have been our primary source of bookkeeping and inventory management since July 2016. The comprehensive and efficient support we have received has been better than all prior service providers. Such hard work and dedication are a rare commodity these days.",
+    rating: null as number | null,
+    date: "2024-01-09",
     published: true,
     featured: true,
   },

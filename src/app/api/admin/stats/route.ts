@@ -1,3 +1,4 @@
+import { DEFAULT_SERVICES } from "@/content/defaults";
 import { adminRoute, ok } from "@/lib/admin-api";
 import { isSmtpConfigured } from "@/lib/mailer";
 import { ContactInquiry, Service, StoredUpload, Testimonial } from "@/models";
@@ -40,7 +41,7 @@ export const GET = adminRoute(async () => {
       newInquiries,
       publishedTestimonials: published,
       draftTestimonials: drafts,
-      activeServices: servicesTotal === 0 ? 6 : activeServices,
+      activeServices: servicesTotal === 0 ? DEFAULT_SERVICES.length : activeServices,
       uploads,
     },
     smtpConfigured: isSmtpConfigured(),

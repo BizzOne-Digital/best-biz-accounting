@@ -5,6 +5,7 @@ import { TAGS } from "@/lib/cache";
 import { mergeDefaults } from "@/lib/utils";
 import { DEFAULT_PAGES, DEFAULT_SERVICES, DEFAULT_SETTINGS, DEFAULT_TESTIMONIALS, type PageKey, type PagesData, type SiteSettingsData } from "@/content/defaults";
 import { PageContent, Service, SiteSettings, Testimonial } from "@/models";
+import { pendingDefaults } from "@/lib/seed";
 import type { ServiceItem, TestimonialItem } from "@/types";
 
 /*
@@ -55,10 +56,12 @@ export async function getServices(): Promise<ServiceItem[]> {
   if (!isDbConfigured()) return defaultServiceItems();
   try {
     await connectDB();
-    const total = await Service.countDocuments();
-    if (total === 0) return defaultServiceItems();
-    const docs = await Service.find({ published: true }).sort({ order: 1, createdAt: 1 }).lean();
-    return toPlain<ServiceItem[]>(docs);
+    const [docs, pending] = await Promise.all([
+      Service.find({ published: true }).sort({ order: 1, createdAt: 1 }).lean(),
+      pendingDefaults(),
+    ]);
+    const extra = pending.services.map((svc, i) => ({ ...svc, _id: svc.slug, order: 1000 + i, published: true, imageUrl: "" }));
+    return [...toPlain<ServiceItem[]>(docs), ...extra];
   } catch (err) {
     console.error("[content] services fallback", err);
     return defaultServiceItems();
@@ -66,7 +69,7 @@ export async function getServices(): Promise<ServiceItem[]> {
 }
 
 export function defaultTestimonialItems(): TestimonialItem[] {
-  return DEFAULT_TESTIMONIALS.filter((t) => t.published).map((t, i) => ({ ...t, _id: `default-${i}`, order: i }));
+  return DEFAULT_TESTIMONIALS.filter((t) => t.published).map((t, i) => ({ ...t, _id: `default-${t.seedKey}`, order: i }));
 }
 
 export async function getTestimonials(): Promise<TestimonialItem[]> {
@@ -76,9 +79,14 @@ export async function getTestimonials(): Promise<TestimonialItem[]> {
   if (!isDbConfigured()) return defaultTestimonialItems();
   try {
     await connectDB();
-    if ((await Testimonial.estimatedDocumentCount()) === 0) return defaultTestimonialItems();
-    const docs = await Testimonial.find({ published: true }).sort({ featured: -1, order: 1, createdAt: -1 }).lean();
-    return toPlain<TestimonialItem[]>(docs);
+    const [docs, pending] = await Promise.all([
+      Testimonial.find({ published: true }).sort({ featured: -1, order: 1, createdAt: -1 }).lean(),
+      pendingDefaults(),
+    ]);
+    const extra = pending.testimonials
+      .filter((t) => t.published)
+      .map((t, i) => ({ ...t, _id: `default-${t.seedKey}`, order: 1000 + i }));
+    return [...toPlain<TestimonialItem[]>(docs), ...extra];
   } catch (err) {
     console.error("[content] testimonials fallback", err);
     return defaultTestimonialItems();

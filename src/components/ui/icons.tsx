@@ -2,15 +2,18 @@ import {
   BookOpen,
   Boxes,
   Briefcase,
+  Building2,
   Calculator,
   ChartColumn,
   ClipboardList,
+  Database,
   FileBadge,
   FileSpreadsheet,
   FileText,
   Landmark,
   PiggyBank,
   ReceiptText,
+  Search,
   Users,
   Wallet,
   type LucideIcon,
@@ -32,6 +35,9 @@ export const SERVICE_ICONS: Record<string, { label: string; Icon: LucideIcon }> 
   savings: { label: "Savings", Icon: PiggyBank },
   briefcase: { label: "Briefcase", Icon: Briefcase },
   book: { label: "Ledger", Icon: BookOpen },
+  search: { label: "Search", Icon: Search },
+  building: { label: "Corporation", Icon: Building2 },
+  database: { label: "Data", Icon: Database },
 };
 
 export function ServiceIcon({ name, className }: { name: string; className?: string }) {
