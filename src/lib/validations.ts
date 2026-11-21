@@ -7,10 +7,10 @@ export const SERVICE_OPTIONS = [
   "Inventory Tracking",
   "Payroll",
   "GST Filing",
-  "NUANS Business Name Search",
+  "Business Name Search (NUANS)",
   "Annual Corporate Filing",
-  "New Business Name Search",
   "Data Migration",
+  "Personal Tax Filing",
   "General Inquiry",
 ] as const;
 

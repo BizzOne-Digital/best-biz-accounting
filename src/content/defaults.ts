@@ -125,15 +125,15 @@ export const DEFAULT_PAGES = {
         },
         {
           question: "What bookkeeping services do you offer?",
-          answer: "Services include accounts payable, accounts receivable, bank reconciliations, inventory tracking and balancing, payroll support (including T4s, ROEs, and remittances), GST filing and remittance support, NUANS and new business name searches, annual corporate filing, and data migration.",
+          answer: "Services include accounts payable, accounts receivable, bank reconciliations, inventory tracking and balancing, payroll support (including T4s, ROEs, and remittances), GST filing and remittance support, NUANS and business name searches, annual corporate filing, and data migration. We can also help with basic personal taxes through H&R Block.",
         },
         {
           question: "What types of businesses do you work with?",
           answer: "Best Biz Accounting focuses on small businesses. The BBA team has bookkeeping experience with couriers, manufacturers, rental businesses, fuel supply companies, and other small businesses.",
         },
         {
-          question: "Do you provide tax or legal advice?",
-          answer: "Our services focus on bookkeeping and recordkeeping support. For tax planning or legal advice, we recommend consulting a qualified tax or legal professional.",
+          question: "Can you help with my taxes?",
+          answer: "Yes. Through our affiliation with H&R Block, we can help with basic personal tax returns. For corporate taxes, we refer clients to our trusted partner, Brown Boys Accounting. If you already have your own accountant, we're happy to work alongside them.",
         },
         {
           question: "How do I get started?",
@@ -165,6 +165,27 @@ export const DEFAULT_PAGES = {
     intro: {
       heading: "Everyday Bookkeeping, Handled With Care",
       text: "Each service below focuses on keeping your records accurate, organized, and current. Services can be combined and tailored to suit your business.",
+    },
+    tax: {
+      visible: true,
+      eyebrow: "Tax Support",
+      heading: "Help With Your Taxes, Too",
+      intro: "Alongside bookkeeping, we can help you get your taxes taken care of through trusted partners and our own growing tax services.",
+      items: [
+        {
+          title: "Basic Personal Taxes",
+          text: "Through our affiliation with H&R Block, we can help with basic personal tax returns.",
+        },
+        {
+          title: "Corporate Taxes",
+          text: "For corporate tax returns, we work with and refer clients to our trusted partner, Brown Boys Accounting.",
+        },
+        {
+          title: "Working With Your Accountant",
+          text: "Already have an accountant? We're happy to work alongside them and keep your books ready for them.",
+        },
+      ] as TitleText[],
+      note: "We plan to offer expanded personal tax filing services in the future.",
     },
     pricing: {
       visible: true,
@@ -306,31 +327,18 @@ export const DEFAULT_SERVICES = [
     bullets: ["GST record organization", "Filing support", "Remittance support"],
   },
   {
-    title: "NUANS Business Name Search",
-    slug: "nuans-business-name-search",
-    shortTitle: "NUANS Name Search",
+    title: "NUANS & Business Name Searches",
+    slug: "business-name-searches",
+    shortTitle: "Business Name Searches",
     icon: "search",
-    summary: "NUANS name search reports to check a proposed business name.",
-    description: "Before you register or incorporate, a NUANS report helps show whether a proposed business name may conflict with existing names and trademarks.",
-    bullets: ["Requesting NUANS name search reports", "Reviewing the search results with you", "Support before you register or incorporate"],
-  },
-  {
-    title: "Annual Corporate Filing",
-    slug: "annual-corporate-filing",
-    shortTitle: "Annual Corporate Filing",
-    icon: "building",
-    summary: "Help keeping your corporation's annual filings current.",
-    description: "We help you keep up with your corporation's annual filing requirements so your records stay current and in good standing.",
-    bullets: ["Annual return filing support", "Tracking filing deadlines", "Organized corporate records"],
-  },
-  {
-    title: "New Business Name Search",
-    slug: "new-business-name-search",
-    shortTitle: "Business Name Search",
-    icon: "clipboard",
-    summary: "Support checking name availability for a new business.",
-    description: "Starting something new? We help you check whether the business name you have in mind is available before you move forward.",
-    bullets: ["Business name availability checks", "Reviewing name options with you", "Support before registering your business"],
+    summary: "NUANS searches for corporations, and business name searches for sole proprietorships, partnerships and trade names.",
+    description: "NUANS and business name searches check different databases for different types of businesses. A NUANS search is a corporate name comparison report used when incorporating a named company. It compares your proposed name against existing corporations, registered business names, and Canadian trademarks. A business name search is a registry lookup for sole proprietorships, partnerships, and trade names, checking whether the name is already registered.",
+    bullets: [
+      "NUANS searches for incorporating a named company",
+      "Comparison against existing corporations, business names and trademarks",
+      "Business name searches for sole proprietorships, partnerships and trade names",
+      "Help choosing the right search for your type of business",
+    ],
   },
   {
     title: "Data Migration",
@@ -342,6 +350,9 @@ export const DEFAULT_SERVICES = [
     bullets: ["Transferring existing financial data", "Reviewing migrated records for accuracy", "Organized setup in your new system"],
   },
 ];
+
+/** Default services that were replaced and should be removed from existing databases. */
+export const RETIRED_SERVICE_SLUGS = ["nuans-business-name-search", "new-business-name-search"];
 
 /** Real, client-provided testimonials (verbatim). Imported into the database on first admin visit. */
 export const DEFAULT_TESTIMONIALS = [

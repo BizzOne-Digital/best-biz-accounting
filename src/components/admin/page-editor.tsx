@@ -27,6 +27,7 @@ const LABELS: Record<string, string> = {
   industries: "Industries Served",
   testimonials: "Testimonials Section",
   process: "How It Works",
+  tax: "Tax Support",
   faq: "FAQ",
   cta: "Call to Action",
   primaryCta: "Primary button label",
@@ -50,7 +51,7 @@ const LABELS: Record<string, string> = {
   industries_list: "Industries",
 };
 
-const LONG_KEYS = new Set(["body", "description", "text", "intro", "subtitle", "offerText", "successMessage", "answer"]);
+const LONG_KEYS = new Set(["body", "description", "text", "intro", "subtitle", "offerText", "successMessage", "answer", "note"]);
 
 const humanize = (key: string) =>
   LABELS[key] ?? key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());

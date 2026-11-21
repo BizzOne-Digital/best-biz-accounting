@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight, CheckCircle2, MessageSquareQuote } from "lucide-react";
+import { ArrowRight, Building2, CheckCircle2, Handshake, MessageSquareQuote, Sparkles, UserRoundCheck } from "lucide-react";
 import { CtaBand } from "@/components/layout/cta-band";
 import { PageHero } from "@/components/layout/page-hero";
 import { ButtonLink } from "@/components/ui/button";
@@ -9,10 +9,12 @@ import { Container, SectionHeading } from "@/components/ui/section";
 import { SmartImage } from "@/components/ui/smart-image";
 import { getPage, getServices, getSettings } from "@/lib/content";
 
+const TAX_ICONS = [UserRoundCheck, Building2, Handshake];
+
 export const metadata: Metadata = {
   title: "Bookkeeping Services",
   description:
-    "Bookkeeping services for small businesses: accounts payable, accounts receivable, bank reconciliations, inventory tracking, payroll (T4, ROE, remittances) and GST filing support.",
+    "Bookkeeping services for small businesses: accounts payable, accounts receivable, bank reconciliations, inventory tracking, payroll (T4, ROE, remittances), GST filing, NUANS and business name searches, corporate filing, data migration and basic personal tax support.",
   alternates: { canonical: "/services" },
 };
 
@@ -107,12 +109,42 @@ export default async function ServicesPage() {
             ))}
           </div>
 
-          <p className="mx-auto mt-10 max-w-3xl text-center text-sm text-brand-muted">
-            Services are bookkeeping and recordkeeping support. For tax planning or legal advice, please consult a
-            qualified tax or legal professional.
-          </p>
         </Container>
       </section>
+
+      {page.tax.visible && page.tax.items.length > 0 && (
+        <section id="tax-support" className="scroll-mt-32 bg-white pb-16 sm:pb-20">
+          <Container>
+            <Reveal>
+              <SectionHeading eyebrow={page.tax.eyebrow} title={page.tax.heading} intro={page.tax.intro} center />
+            </Reveal>
+            <ul className="mt-12 grid gap-5 md:grid-cols-3">
+              {page.tax.items.map((item, i) => {
+                const Icon = TAX_ICONS[i % TAX_ICONS.length];
+                return (
+                  <Reveal as="li" key={i} delay={i * 90}>
+                    <div className="group h-full rounded-2xl border border-brand-border bg-gradient-to-b from-white to-brand-cream p-7 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/40 hover:shadow-[0_18px_40px_-22px_rgba(50,25,15,0.45)]">
+                      <span className="flex size-14 items-center justify-center rounded-xl bg-brand-dark text-brand-gold transition-transform duration-500 group-hover:scale-110">
+                        <Icon className="size-7" strokeWidth={1.6} aria-hidden="true" />
+                      </span>
+                      <h3 className="mt-5 text-lg font-semibold text-brand-dark">{item.title}</h3>
+                      <p className="mt-2.5 leading-relaxed text-brand-muted">{item.text}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </ul>
+            {page.tax.note && (
+              <Reveal>
+                <p className="mx-auto mt-8 flex max-w-2xl items-center justify-center gap-2.5 rounded-full bg-brand-beige px-5 py-3 text-center text-sm font-medium text-brand-dark">
+                  <Sparkles className="size-4 shrink-0 text-brand-orange" aria-hidden="true" />
+                  {page.tax.note}
+                </p>
+              </Reveal>
+            )}
+          </Container>
+        </section>
+      )}
 
       {page.pricing.visible && (
         <section className="bg-brand-cream py-16 sm:py-20">

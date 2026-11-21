@@ -3,7 +3,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { connectDB, isDbConfigured, toPlain } from "@/lib/db";
 import { TAGS } from "@/lib/cache";
 import { mergeDefaults } from "@/lib/utils";
-import { DEFAULT_PAGES, DEFAULT_SERVICES, DEFAULT_SETTINGS, DEFAULT_TESTIMONIALS, type PageKey, type PagesData, type SiteSettingsData } from "@/content/defaults";
+import { DEFAULT_PAGES, DEFAULT_SERVICES, DEFAULT_SETTINGS, DEFAULT_TESTIMONIALS, RETIRED_SERVICE_SLUGS, type PageKey, type PagesData, type SiteSettingsData } from "@/content/defaults";
 import { PageContent, Service, SiteSettings, Testimonial } from "@/models";
 import { pendingDefaults } from "@/lib/seed";
 import type { ServiceItem, TestimonialItem } from "@/types";
@@ -61,7 +61,10 @@ export async function getServices(): Promise<ServiceItem[]> {
       pendingDefaults(),
     ]);
     const extra = pending.services.map((svc, i) => ({ ...svc, _id: svc.slug, order: 1000 + i, published: true, imageUrl: "" }));
-    return [...toPlain<ServiceItem[]>(docs), ...extra];
+    const retired = new Set(
+      RETIRED_SERVICE_SLUGS.filter((slug) => !pending.logged.has(`retired:service:${slug}`)),
+    );
+    return [...toPlain<ServiceItem[]>(docs).filter((svc) => !retired.has(svc.slug)), ...extra];
   } catch (err) {
     console.error("[content] services fallback", err);
     return defaultServiceItems();

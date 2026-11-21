@@ -1,5 +1,5 @@
 import "server-only";
-import { DEFAULT_SERVICES, DEFAULT_TESTIMONIALS } from "@/content/defaults";
+import { DEFAULT_SERVICES, DEFAULT_TESTIMONIALS, RETIRED_SERVICE_SLUGS } from "@/content/defaults";
 import { SeedLog, Service, Testimonial } from "@/models";
 
 /*
@@ -37,8 +37,18 @@ async function markLogged(keys: string[]) {
   await SeedLog.bulkWrite(keys.map((key) => ({ updateOne: { filter: { key }, update: { $setOnInsert: { key } }, upsert: true } })));
 }
 
+/** Removes replaced default services once (logged, so a re-created service is never touched again). */
+async function retireServices(logged: Set<string>) {
+  const keys = RETIRED_SERVICE_SLUGS.map((slug) => `retired:service:${slug}`).filter((k) => !logged.has(k));
+  if (!keys.length) return;
+  const slugs = keys.map((k) => k.replace("retired:service:", ""));
+  await Service.deleteMany({ slug: { $in: slugs } });
+  await markLogged(keys);
+}
+
 /** Imports any pending default services. Called from admin routes. */
 export async function syncDefaultServices() {
+  await retireServices(await loggedKeys());
   const { services, logged } = await pendingDefaults();
   if (services.length) {
     const last = await Service.findOne().sort({ order: -1 }).select("order").lean();
