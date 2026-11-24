@@ -125,7 +125,7 @@ export const DEFAULT_PAGES = {
         },
         {
           question: "What bookkeeping services do you offer?",
-          answer: "Services include accounts payable, accounts receivable, bank reconciliations, inventory tracking and balancing, payroll support (including T4s, ROEs, and remittances), GST filing and remittance support, NUANS and business name searches, annual corporate filing, and data migration. We can also help with basic personal taxes through H&R Block.",
+          answer: "Services include accounts payable, accounts receivable, bank reconciliations, inventory tracking and balancing, payroll support (including T4s, ROEs, and remittances), GST filing and remittance support, NUANS and business name searches, annual corporate filing, and data migration. We can also help with basic personal tax returns.",
         },
         {
           question: "What types of businesses do you work with?",
@@ -133,7 +133,7 @@ export const DEFAULT_PAGES = {
         },
         {
           question: "Can you help with my taxes?",
-          answer: "Yes. Through our affiliation with H&R Block, we can help with basic personal tax returns. For corporate taxes, we refer clients to our trusted partner, Brown Boys Accounting. If you already have your own accountant, we're happy to work alongside them.",
+          answer: "Yes. We can help with basic personal tax returns. For corporate taxes, we refer clients to our trusted partner, Brown Boys Accounting. If you already have your own accountant, we're happy to work alongside them.",
         },
         {
           question: "How do I get started?",
@@ -174,7 +174,7 @@ export const DEFAULT_PAGES = {
       items: [
         {
           title: "Basic Personal Taxes",
-          text: "Through our affiliation with H&R Block, we can help with basic personal tax returns.",
+          text: "We can help you prepare and file basic personal tax returns.",
         },
         {
           title: "Corporate Taxes",
